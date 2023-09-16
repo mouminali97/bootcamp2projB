@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="regression"> 
+
+
+<test name="test1">
+
+<parameter name="brow" value="Chrome"></parameter>
+
+<parameter name="title" value="Mr."></parameter>
+<parameter name="firstName" value="moumin"></parameter>
+<parameter name="middleName" value="XXXX"></parameter>
+<parameter name="lastName" value="ali"></parameter>
+<parameter name="email" value="abc@yahoo.com"></parameter>
+<parameter name="countryCode" value="Brunei +673"></parameter>
+<parameter name="phoneNumber" value="999-9999"></parameter>
+<parameter name="passport" value="Brunei"></parameter>
+<parameter name="gender" value="M"></parameter>
+<parameter name="birthMonth" value="01 - Jan"></parameter>
+<parameter name="birthDay" value="19"></parameter>
+<parameter name="birthYear" value="1997"></parameter>
+
+<classes>
+<class name="bootcamp2.bootcamp2ProjectB.TestCl"></class>
+</classes>
+</test>
+
+</suite>
