@@ -35,15 +35,13 @@ public class HomePOM {
 	WebElement goingTo_field;
 	
 	@FindBy (xpath = "//*[@data-stid='uitk-date-selector-input1-default']")
-	WebElement selectDates_button;
+	WebElement selectCalendar_button;
 	
 	@FindBy (xpath = "(//*[@class='uitk-day-button uitk-day-selectable uitk-day-clickable'])[5]")
 	WebElement startDate;
-	//Tuesday, September 19, 2023
 	
 	@FindBy (xpath = "(//*[@class='uitk-day-button uitk-day-selectable uitk-day-clickable'])[11]")
 	WebElement endDate;
-	//Monday, September 25, 2023
 	
 	@FindBy (xpath = "//*[text()='Done']")
 	WebElement done_button;
@@ -122,113 +120,139 @@ public class HomePOM {
 		flightsTab.click();
 	}
 	
-	public void fill_searchFlightForm() throws InterruptedException{
-		
-		String departure = "Bandar Seri Begawan (BWN - Brunei Intl.) Brunei";
-		String arrival = "Kuala Lumpur (KUL - Kuala Lumpur Intl.) Malaysia";
-		
-		WebDriverWait ob = new WebDriverWait(driver,20); //Explicit wait
-		
+	public void leavingFrom_button_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
 		ob.until(ExpectedConditions.elementToBeClickable(leavingFrom_button)).click();
+	}
+	
+	public void fill_leavingFrom_field(String departure) {
 		leavingFrom_field.sendKeys(departure);
-		leavingFrom_field.sendKeys(Keys.ENTER);
-		
+	}
+	
+	public void goingTo_button_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
 		ob.until(ExpectedConditions.elementToBeClickable(goingTo_button)).click();
+	}
+	
+	public void fill_goingTo_field(String arrival) {
 		goingTo_field.sendKeys(arrival);
-		goingTo_field.sendKeys(Keys.ENTER);
-		
-		ob.until(ExpectedConditions.elementToBeClickable(selectDates_button)).click();
+	}
+	
+	public void selectCalendar_button_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
+		ob.until(ExpectedConditions.elementToBeClickable(selectCalendar_button)).click();
+	}
+	
+	public void startDate_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
 		ob.until(ExpectedConditions.elementToBeClickable(startDate)).click();
-		Thread.sleep(1000);
-        ob.until(ExpectedConditions.elementToBeClickable(endDate)).click();
-        Thread.sleep(1000);
-        ob.until(ExpectedConditions.elementToBeClickable(done_button)).click();
-        Thread.sleep(5000);
-        ob.until(ExpectedConditions.elementToBeClickable(search_button)).click();
+	}
+	
+	public void endDate_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
+		ob.until(ExpectedConditions.elementToBeClickable(endDate)).click();
+	}
+	
+	public void done_button_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
+		ob.until(ExpectedConditions.elementToBeClickable(done_button)).click();
+	}
+	
+	public void search_button_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
+		ob.until(ExpectedConditions.elementToBeClickable(search_button)).click();
 	}
 	
 	
-	public void selectRoundTrip() throws InterruptedException {
-		WebDriverWait ob = new WebDriverWait(driver,20); //Explicit wait
-		
+	public void goingFlight_button_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 50); // Explicit wait
 		ob.until(ExpectedConditions.elementToBeClickable(goingFlight_button)).click();
-		Thread.sleep(1000);
+	}
+	
+	public void goingFlight_select_button_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
 		ob.until(ExpectedConditions.elementToBeClickable(goingFlight_select_button)).click();
-		Thread.sleep(1000);
+	}
+	
+	public void returningFlight_button_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
 		ob.until(ExpectedConditions.elementToBeClickable(returningFlight_button)).click();
-		Thread.sleep(1000);
+	}
+	
+	public void returningFlight_select_button_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
 		ob.until(ExpectedConditions.elementToBeClickable(returningFlight_select_button)).click();
-		Thread.sleep(5000);
-		
 	}
 	
 	
-	public void switchToOtherTab() throws InterruptedException {
-		WebDriverWait ob = new WebDriverWait(driver,20);
-		
-		Set<String> winsession = driver.getWindowHandles();
-        Iterator<String> itr = winsession.iterator();
-        
-        String win1 = itr.next();
-        String win2 = itr.next();
-        
-        driver.switchTo().window(win2);
-        Thread.sleep(1000);
-        
-        ob.until(ExpectedConditions.elementToBeClickable(checkOut_button)).click();
-		Thread.sleep(1000);
+	public void checkOut_button_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
+		ob.until(ExpectedConditions.elementToBeClickable(checkOut_button)).click();
+	}
+	
+	public void goTocheckOut_button_click() {
+		WebDriverWait ob = new WebDriverWait(driver, 20); // Explicit wait
 		ob.until(ExpectedConditions.elementToBeClickable(goTocheckOut_button)).click();
-		Thread.sleep(5000);
 	}
 	
-	
-	public void fill_passengerInfo(String title, String firstName, String middleName, String lastName, String email, String countryCode, String phoneNumber, String passport, String gender, String birthMonth, String birthDay, String birthYear) throws InterruptedException {
-		
+	public void title_dropDownMenu_select(String title) {
 		Select ob = new Select(title_dropDownMenu);
         ob.selectByVisibleText(title);
-        
-        firstName_field.sendKeys(firstName);
-        Thread.sleep(1000);
-        middleName_field.sendKeys(middleName);
-        Thread.sleep(1000);
-        lastName_field.sendKeys(lastName);
-        Thread.sleep(1000);
-        
-        emailAddress_field.sendKeys(email);
-        Thread.sleep(1000);
-        
-        Select ob2 = new Select(countryCode_dropDownMenu);
-        ob2.selectByVisibleText(countryCode);
-        
-        phoneNumber_field.sendKeys(phoneNumber);
-        Thread.sleep(1000);
-        
-        Select ob3 = new Select(passport_dropDownMenu);
-        ob3.selectByVisibleText(passport);
-        
-        
-        if (gender.contains("F")) {
-        	femaleGender_select.click();
-        	} 
-        else{
-        	maleGender_select.click();
-        	} 
-        
-        
-        Select ob4 = new Select(birthMonth_dropDownMenu);
-        ob4.selectByVisibleText(birthMonth);
-        Thread.sleep(1000);
-        
-        Select ob5 = new Select(birthDay_dropDownMenu);
-        ob5.selectByVisibleText(birthDay);
-        Thread.sleep(1000);
-        
-        Select ob6 = new Select(birthYear_dropDownMenu);
-        ob6.selectByVisibleText(birthYear);
-        Thread.sleep(5000);
-        
-        
 	}
+	
+	public void fill_firstName_field(String firstName) {
+		firstName_field.sendKeys(firstName);
+	}
+	
+	public void fill_middleName_field(String middleName) {
+		middleName_field.sendKeys(middleName);
+	}
+	
+	public void fill_lastName_field(String lastName) {
+		lastName_field.sendKeys(lastName);
+	}
+	
+	public void fill_emailAddress_field(String email) {
+		emailAddress_field.sendKeys(email);
+	}
+	
+	public void countryCode_dropDownMenu_select(String countryCode) {
+		Select ob = new Select(countryCode_dropDownMenu);
+        ob.selectByVisibleText(countryCode);
+	}
+	
+	public void fill_phoneNumber_field(String phoneNumber) {
+		phoneNumber_field.sendKeys(phoneNumber);
+	}
+	
+	public void passport_dropDownMenu_select(String passport) {
+		Select ob = new Select(passport_dropDownMenu);
+        ob.selectByVisibleText(passport);
+	}
+	
+	public void femaleGender_select_click() {
+		femaleGender_select.click();
+	}
+	
+	public void maleGender_select_click() {
+		maleGender_select.click();
+	}
+	
+	public void birthMonth_dropDownMenu_select(String birthMonth) {
+		Select ob = new Select(birthMonth_dropDownMenu);
+        ob.selectByVisibleText(birthMonth);
+	}
+	
+	public void birthDay_dropDownMenu_select(String birthDay) {
+		Select ob = new Select(birthDay_dropDownMenu);
+        ob.selectByVisibleText(birthDay);
+	}
+	
+	public void birthYear_dropDownMenu_select(String birthYear) {
+		Select ob = new Select(birthYear_dropDownMenu);
+        ob.selectByVisibleText(birthYear);
+	}
+	
 	
 
 }

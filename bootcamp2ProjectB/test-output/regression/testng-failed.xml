@@ -19,7 +19,7 @@
       <class name="bootcamp2.bootcamp2ProjectB.TestCl">
         <methods>
           <include name="beforeMethod"/>
-          <include name="f"/>
+          <include name="f" invocation-numbers="0"/>
           <include name="afterMethod"/>
         </methods>
       </class> <!-- bootcamp2.bootcamp2ProjectB.TestCl -->
